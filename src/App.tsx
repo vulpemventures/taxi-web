@@ -24,6 +24,9 @@ const App: React.FunctionComponent<Props> = () => {
             </p>
             <InputWithButton
               buttonText="Top-up"
+              buttonDisabled
+              hasError
+              errorMessage={'ciaooo'}
               onSubmit={() => console.log('clicked')}
             />
           </div>
