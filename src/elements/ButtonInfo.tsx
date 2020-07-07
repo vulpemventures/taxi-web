@@ -10,7 +10,7 @@ const Button: React.FunctionComponent<Props> = props => (
     style={{ borderColor: '#fdfffc' }}
     onClick={props.onClick}
   >
-    <h1 className="title is-5">{props.children}</h1>
+    <h1 className="title is-6">{props.children}</h1>
   </button>
 );
 
