@@ -1,5 +1,5 @@
 # 🚕 Liquid.taxi
-Transfer Liquid assets withut having L-BTCs. 
+Transfer Liquid assets without holding Liquid Bitcoins 
 
 ![Image of Liquid Taxi](https://raw.githubusercontent.com/vulpemventures/liquid.taxi/master/src/images/taxi-social.jpg)
 
