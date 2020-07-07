@@ -1,5 +1,5 @@
 # 🚕 Liquid.taxi
-Pay Liquid fees using Lightning Network. 
+Transfer Liquid assets withut having L-BTCs. 
 
 ![Image of Liquid Taxi](https://raw.githubusercontent.com/vulpemventures/liquid.taxi/master/src/images/taxi-social.jpg)
 
@@ -17,10 +17,10 @@ $ yarn
 $ yarn serve
 ```
 
-# Build
+# Bundle for production
  
 ```sh
-$ yarn build
+$ yarn bundle
 ```
 
 # Deploy Github Pages
