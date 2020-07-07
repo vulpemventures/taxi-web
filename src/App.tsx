@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './Layout';
 
-interface Props { }
+interface Props {}
 
 const App: React.FunctionComponent<Props> = () => {
   return (

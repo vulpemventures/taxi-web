@@ -17,6 +17,12 @@ $ yarn
 $ yarn serve
 ```
 
+* Lint
+
+```sh
+$ yarn lint
+```
+
 # Bundle for production
  
 ```sh
