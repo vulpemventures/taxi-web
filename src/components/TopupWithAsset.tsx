@@ -5,7 +5,7 @@ import InputWithButton from '../elements/InputWithButton';
 import ButtonPrimary from '../elements/ButtonPrimary';
 import ButtonInfo from '../elements/ButtonInfo';
 
-interface Props { }
+interface Props {}
 
 /**
  * 
@@ -56,9 +56,10 @@ const Topup: React.FunctionComponent<Props> = () => {
         <p className="subtitle is-6  mt-6 mb-6">Estimate</p>
         <h1 className="title is-3 mt-6">0.65 USDt</h1>
         <p className="subtitle is-6">
-          <a href="" onClick={() => setShowDetails(!showDetails)}>{`${
+          {/* eslint-disable-next-line */}
+          <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
             !showDetails ? `View` : `Hide`
-            } details`}</a>
+          } details`}</a>
         </p>
         {showDetails && (
           <div className="notification is-warning">
@@ -88,9 +89,10 @@ const Topup: React.FunctionComponent<Props> = () => {
         <p className="subtitle is-6  mt-6 mb-6">ORDER #473838</p>
         <h1 className="title is-3 mt-6">0.65 USDt</h1>
         <p className="subtitle is-6">
-          <a onClick={() => setShowDetails(!showDetails)}>{`${
+          {/* eslint-disable-next-line */}
+          <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
             !showDetails ? `View` : `Hide`
-            } details`}</a>
+          } details`}</a>
         </p>
         {showDetails && (
           <div className="notification is-warning">
