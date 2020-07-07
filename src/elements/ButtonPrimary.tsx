@@ -7,7 +7,7 @@ interface Props {
 
 const Button: React.FunctionComponent<Props> = props => (
   <button
-    className="button is-primary"
+    className="button is-primary is-medium"
     onClick={props.onClick}
     disabled={props.disabled || false}
   >

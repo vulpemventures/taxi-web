@@ -7,7 +7,7 @@ interface Props {
 
 const Button: React.FunctionComponent<Props> = props => (
   <button
-    className="button is-dark"
+    className="button is-dark is-medium"
     style={{ borderColor: '#fdfffc' }}
     disabled={props.disabled || false}
     onClick={props.onClick}

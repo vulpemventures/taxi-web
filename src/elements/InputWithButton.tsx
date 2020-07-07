@@ -1,7 +1,8 @@
 import React from 'react';
 
 interface Props {
-  placeholder?: string;
+  inputPlaceholder?: string;
+  inputText?: string;
   onSubmit?: any;
   hasError?: boolean;
   errorMessage?: string;
@@ -10,19 +11,21 @@ interface Props {
 }
 
 const Input: React.FunctionComponent<Props> = props => {
-  const inputClass = `input is-large ${props.hasError && `is-danger`}`;
+  const inputClass = `input is-medium ${props.hasError && `is-danger`}`;
   return (
     <div>
       <div className="field has-addons">
         <input
           type="text"
+          readOnly={props.inputText ? true : false}
+          value={props.inputText}
           className={inputClass}
           placeholder={
-            props.placeholder || 'Provide a transacion (PSET format)'
+            props.inputPlaceholder || 'Provide a transacion (PSET format)'
           }
         />
         <button
-          className="button is-primary is-large"
+          className="button is-primary is-medium"
           onClick={props.onSubmit}
           disabled={props.buttonDisabled || false}
         >

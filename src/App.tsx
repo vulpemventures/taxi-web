@@ -1,34 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from './Layout';
 
-import InputWithButton from './elements/InputWithButton';
+import TopupWithAsset from './components/TopupWithAsset';
+import TopupWithLN from './components/TopupWithLN';
+
 import ButtonRadio from './elements/ButtonRadio';
 
 interface Props {}
 
 const RADIO_VALUES = ['Pay with Liquid Tether', 'Pay with Lightning Network'];
 
+enum VIEW {
+  ASSET = 1,
+  LN = 2,
+}
+
 const App: React.FunctionComponent<Props> = () => {
+  const [view, setView] = useState(VIEW.ASSET);
+
   return (
     <Layout>
       <div className="container">
         <div className="columns">
           <div className="column is-6-desktop is-offset-3-desktop">
-            <ButtonRadio onChange={console.log} values={RADIO_VALUES} />
-            <h1 className="title is-3 mt-6">Liquid Top-up service</h1>
-            <p className="subtitle is-5 mt-3 mb-6">
-              1. Provide a transaction (PSET format) spending your Liquid assets{' '}
-              <br />
-              2. We will add L-BTC fees on your behalf <br />
-              3. Import the transaction in your wallet. It's ready to be signed
-            </p>
-            <InputWithButton
-              buttonText="Top-up"
-              buttonDisabled
-              hasError
-              errorMessage={'ciaooo'}
-              onSubmit={() => console.log('clicked')}
+            <ButtonRadio
+              onChange={(i: number) => setView(i + 1)}
+              values={RADIO_VALUES}
             />
+            {view === VIEW.ASSET ? <TopupWithAsset /> : <TopupWithLN />}
           </div>
         </div>
       </div>
