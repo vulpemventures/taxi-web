@@ -2,25 +2,38 @@
 
 @import "../../node_modules/bulma/sass/utilities/initial-variables";
 // Import a Google Font
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
 
 // Set your brand colors
-$orangeyRed: #ff4c31;
-$darkGray: #232227;
-$dark: #0f0e11;
+$yellow: #ffcd3f;
+$darkBlue: #182538;
+$lightBlue: #304057;
 $powderWhite: #fdfffc;
-$coolGray: #afaeb5;
+$red: #c93838;
+$green: #0ab110;
+$dark: #000000;
+
 
 // Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $darkGray;
-$grey-light: $coolGray;
-$primary: $dark;
-$link: $orangeyRed;
+$family-sans-serif: "Montserrat", sans-serif;
+$primary: $yellow;
+$link: $yellow;
+$link-hover: $powderWhite;
+$info: $lightBlue;
+$success: $green;
+$danger: $red;
+$dark: $darkBlue;
+$text: $powderWhite;
+
+// Body
+$body-background-color: $darkBlue;
+// Text
+$title-color: $powderWhite;
+$subtitle-color: $powderWhite;
 
 // Update some of Bulma's component variables
-$control-border-width: 2px;
 $input-background-color: $powderWhite;
+
 
 // Import the rest of Bulma and others components
 @import "../../node_modules/bulma/bulma";

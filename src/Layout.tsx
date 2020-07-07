@@ -50,7 +50,15 @@ class Layout extends React.Component<Props> {
               target="_blank"
               rel="noopener noreferrer"
             >
-              © Vulpem Ventures OU
+              © 2020 Vulpem Ventures OU
+            </a>
+            {` - `}
+            <a
+              href="https://alissadeleva.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Design by AD
             </a>
           </p>
         </footer>
