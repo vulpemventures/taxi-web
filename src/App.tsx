@@ -19,7 +19,7 @@ const App: React.FunctionComponent<Props> = () => {
   const [view, setView] = useState(VIEW.ASSET);
 
   return (
-    <Layout>
+    <Layout menu={['Top-up', 'FAQ', 'API']} onMenuChange={console.log}>
       <div className="container">
         <div className="columns">
           <div className="column is-6-desktop is-offset-3-desktop">

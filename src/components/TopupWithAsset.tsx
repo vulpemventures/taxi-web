@@ -42,6 +42,8 @@ const Topup: React.FunctionComponent<Props> = () => {
         </p>
         <InputWithButton
           buttonText="Estimate"
+          inputPlaceholder={'Provide a transacion (PSET format)'}
+          onInputChange={console.log}
           onSubmit={() => {
             setView(VIEW.CONFIRM);
             console.log('weee');

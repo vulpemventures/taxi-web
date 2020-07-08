@@ -33,7 +33,9 @@ $body-background-color: $darkBlue;
 // Title
 $title-color: $powderWhite;
 $subtitle-color: $powderWhite;
-
+// Navbar
+$navbar-height: 7.25rem;
+$navbar-item-img-max-height: 7.25rem;
 
 // Import the rest of Bulma and others components
 @import "../../node_modules/bulma/bulma";

@@ -4,6 +4,7 @@ interface Props {
   inputPlaceholder?: string;
   inputText?: string;
   onSubmit?: any;
+  onInputChange?: any;
   hasError?: boolean;
   errorMessage?: string;
   buttonDisabled?: boolean;
@@ -18,11 +19,10 @@ const Input: React.FunctionComponent<Props> = props => {
         <input
           type="text"
           readOnly={props.inputText ? true : false}
-          value={props.inputText}
+          defaultValue={props.inputText}
+          onChange={(e: any) => props.onInputChange(e.target.value)}
           className={inputClass}
-          placeholder={
-            props.inputPlaceholder || 'Provide a transacion (PSET format)'
-          }
+          placeholder={props.inputPlaceholder}
         />
         <button
           className="button is-primary is-medium"
