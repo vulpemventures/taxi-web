@@ -2,12 +2,10 @@ import React from 'react';
 
 //import InputWithButton from '../elements/InputWithButton';
 
-interface Props { }
+interface Props {}
 
 const Topup: React.FunctionComponent<Props> = () => {
-  return (
-    <h1 className="title has-text-centered mt-6">Coming soon</h1>
-  );
+  return <h1 className="title has-text-centered mt-6">Coming soon</h1>;
   /*return (
     <div>
       <h1 className="title is-3 mt-6">Top-up with Lightning Network</h1>

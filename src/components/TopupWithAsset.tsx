@@ -5,7 +5,7 @@ import InputWithButton from '../elements/InputWithButton';
 import ButtonPrimary from '../elements/ButtonPrimary';
 import ButtonInfo from '../elements/ButtonInfo';
 
-interface Props { }
+interface Props {}
 
 /**
  * 
@@ -60,7 +60,7 @@ const Topup: React.FunctionComponent<Props> = () => {
           {/* eslint-disable-next-line */}
           <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
             !showDetails ? `View` : `Hide`
-            } details`}</a>
+          } details`}</a>
         </p>
         {showDetails && (
           <div className="notification is-warning">
@@ -93,7 +93,7 @@ const Topup: React.FunctionComponent<Props> = () => {
           {/* eslint-disable-next-line */}
           <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
             !showDetails ? `View` : `Hide`
-            } details`}</a>
+          } details`}</a>
         </p>
         {showDetails && (
           <div className="notification is-warning">
