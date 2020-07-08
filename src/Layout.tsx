@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ButtonInfo from './elements/ButtonInfo';
 import ButtonPrimary from './elements/ButtonPrimary';
+import ButtonTransparent from './elements/ButtonTransparent';
 
 const taxiImage = require('../public/favicon.png');
 
@@ -43,14 +43,14 @@ class Layout extends React.Component<Props> {
 
         return (
           <div key={i} className="navbar-item">
-            <ButtonInfo
+            <ButtonTransparent
               onClick={() => {
                 this.props.onMenuChange(i);
                 this.setState({ selected: i });
               }}
             >
               {m}
-            </ButtonInfo>
+            </ButtonTransparent>
           </div>
         );
       });

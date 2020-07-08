@@ -1,11 +1,14 @@
 import React from 'react';
 
-import InputWithButton from '../elements/InputWithButton';
+//import InputWithButton from '../elements/InputWithButton';
 
-interface Props {}
+interface Props { }
 
 const Topup: React.FunctionComponent<Props> = () => {
   return (
+    <h1 className="title has-text-centered mt-6">Coming soon</h1>
+  );
+  /*return (
     <div>
       <h1 className="title is-3 mt-6">Top-up with Lightning Network</h1>
       <p className="subtitle is-5 mt-3 mb-6">
@@ -20,7 +23,7 @@ const Topup: React.FunctionComponent<Props> = () => {
         onSubmit={() => console.log('clicked')}
       />
     </div>
-  );
+  );*/
 };
 
 export default Topup;

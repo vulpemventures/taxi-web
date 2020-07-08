@@ -5,7 +5,7 @@ import InputWithButton from '../elements/InputWithButton';
 import ButtonPrimary from '../elements/ButtonPrimary';
 import ButtonInfo from '../elements/ButtonInfo';
 
-interface Props {}
+interface Props { }
 
 /**
  * 
@@ -36,17 +36,16 @@ const Topup: React.FunctionComponent<Props> = () => {
       <div>
         <h1 className="title is-3 mt-6">Top-up with L-USDt</h1>
         <p className="subtitle is-5 mt-3 mb-6">
-          Provide the partial transaction spending your Liquid assets. <br />
-          Be sure to add enough L-USDt to cover fees (~ $0.5)
+          Provide the unsigned transaction spending your Liquid assets. <br />
+          Be sure to add an input with enough L-USDt to cover fees (~ $0.5)
           <br />
         </p>
         <InputWithButton
           buttonText="Estimate"
-          inputPlaceholder={'Provide a transacion (PSET format)'}
+          inputPlaceholder={'Provide a PSET (base64)'}
           onInputChange={console.log}
           onSubmit={() => {
             setView(VIEW.CONFIRM);
-            console.log('weee');
           }}
         />
       </div>
@@ -61,7 +60,7 @@ const Topup: React.FunctionComponent<Props> = () => {
           {/* eslint-disable-next-line */}
           <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
             !showDetails ? `View` : `Hide`
-          } details`}</a>
+            } details`}</a>
         </p>
         {showDetails && (
           <div className="notification is-warning">
@@ -94,7 +93,7 @@ const Topup: React.FunctionComponent<Props> = () => {
           {/* eslint-disable-next-line */}
           <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
             !showDetails ? `View` : `Hide`
-          } details`}</a>
+            } details`}</a>
         </p>
         {showDetails && (
           <div className="notification is-warning">
