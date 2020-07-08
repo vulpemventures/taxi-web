@@ -1,8 +1,8 @@
 {
-  "name": "liquid.taxi",
+  "name": "taxi-web",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:vulpemventures/liquid.taxi.git",
+  "repository": "git@github.com:vulpemventures/taxi-web.git",
   "author": "Vulpem Ventures Team",
   "license": "MIT",
   "engines": {
@@ -19,7 +19,7 @@
     "lint": "tsdx lint",
     "scss": "npx node-sass --output-style compressed -o public/css public/scss",
     "serve": "npx parcel --no-cache --port 8080 public/index.html",
-    "bundle": "yarn scss && yarn build && npx parcel build --no-cache public/index.html",
+    "bundle": "yarn scss && yarn build && npx parcel build --no-cache public/index.html --public-url /taxi-web",
     "deploy": "npx push-dir --dir=dist --branch=gh-pages"
   },
   "husky": {
