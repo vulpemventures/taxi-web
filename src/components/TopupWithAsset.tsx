@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { copyToClipboard } from 'copy-lite';
 
 import InputWithButton from '../elements/InputWithButton';
-import ButtonPrimary from '../elements/ButtonPrimary';
-import ButtonInfo from '../elements/ButtonInfo';
+import SuccessImage from '../../public/success.svg';
+import FormWithButton from '../elements/FormWithButton';
 
 interface Props {}
 
@@ -21,7 +21,7 @@ enum VIEW {
 }
 
 const Topup: React.FunctionComponent<Props> = () => {
-  const [view, setView] = useState(1);
+  const [view, setView] = useState(VIEW.ESTIMATE);
   const [showDetails, setShowDetails] = useState(false);
   const [copySuccess, setCopySuccess] = useState('');
 
@@ -36,49 +36,58 @@ const Topup: React.FunctionComponent<Props> = () => {
       <div>
         <h1 className="title is-3 mt-6">Top-up with L-USDt</h1>
         <p className="subtitle is-5 mt-3 mb-6">
-          Provide the unsigned transaction spending your Liquid assets. <br />
+          Provide the number of inputs and outputs of the transaction
+          <br />
           Be sure to add an input with enough L-USDt to cover fees (~ $0.5)
           <br />
         </p>
-        <InputWithButton
+        <FormWithButton
+          firstPlaceholder="Number of inputs"
+          secondPlaceholder="Number of outputs"
+          onFirstInputChange={console.log}
+          onSecondInputChange={console.log}
           buttonText="Estimate"
-          inputPlaceholder={'Provide a PSET (base64)'}
-          onInputChange={console.log}
-          onSubmit={() => {
-            setView(VIEW.CONFIRM);
-          }}
+          onSubmit={() => setView(VIEW.CONFIRM)}
         />
       </div>
     );
 
   if (view === VIEW.CONFIRM)
     return (
-      <div className="has-text-centered">
-        <p className="subtitle is-6  mt-6 mb-6">Estimate</p>
-        <h1 className="title is-3 mt-6">0.65 USDt</h1>
-        <p className="subtitle is-6">
-          {/* eslint-disable-next-line */}
-          <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
-            !showDetails ? `View` : `Hide`
-          } details`}</a>
-        </p>
-        {showDetails && (
-          <div className="notification is-warning">
-            Network fees (L-BTC): 500 <br />
-            Service fees (L-BTC): 50 <br />
-            Total fees (L-BTC): 550 <hr />
-            Total fees (L-USDt): 65853500
-          </div>
-        )}
-
-        <div className="buttons is-centered">
-          <ButtonPrimary onClick={() => setView(VIEW.RESULT)}>
-            Confirm, I have enough to cover fees
-          </ButtonPrimary>
-          <ButtonInfo onClick={() => setView(VIEW.ESTIMATE)}>
-            Provide different transaction
-          </ButtonInfo>
+      <div>
+        <div className="has-text-centered">
+          <p className="subtitle is-6  mt-6 mb-3">Taxi Fee</p>
+          <h1 className="title is-3 mt-3">0.65 USDt</h1>
+          <p className="subtitle is-6">
+            {/* eslint-disable-next-line */}
+            <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
+              !showDetails ? `View` : `Hide`
+            } details`}</a>
+          </p>
+          {showDetails && (
+            <div className="notification is-warning">
+              Network fees (L-BTC): 500 <br />
+              Service fees (L-BTC): 50 <br />
+              Total fees (L-BTC): 550 <hr />
+              Total fees (L-USDt): 65853500
+            </div>
+          )}
         </div>
+
+        <p className="subtitle is-5 mt-3 mb-3">
+          Provide the unsigned transaction spending your Liquid assets. <br />
+          Remember to subtract from the actual change the Taxi fee.
+          <br />
+        </p>
+
+        <InputWithButton
+          buttonText="Top-up"
+          inputPlaceholder={'Provide a PSET (base64)'}
+          onInputChange={console.log}
+          onSubmit={() => {
+            setView(VIEW.RESULT);
+          }}
+        />
       </div>
     );
 
@@ -103,6 +112,7 @@ const Topup: React.FunctionComponent<Props> = () => {
             Total fees (L-USDt): 65853500
           </div>
         )}
+        <img src={SuccessImage} alt="Liquid Taxi Success" />
         <h1 className="title is-5 mt-3 mb-6">Topup successful</h1>
         <h1 className="title is-6 mt-6 has-text-left">Transaction with fees</h1>
         <InputWithButton
@@ -110,6 +120,10 @@ const Topup: React.FunctionComponent<Props> = () => {
           inputText={resultPset}
           onSubmit={() => copy(resultPset)}
         />
+        <p className="subtitle is-6 mt-3">
+          Import this transaction (PSET) in your Liquid wallet to sign and
+          finalize the transfer of your Liquid Assets
+        </p>
       </div>
     );
   return null;
