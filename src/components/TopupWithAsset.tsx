@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { copyToClipboard } from 'copy-lite';
 
 import InputWithButton from '../elements/InputWithButton';
-import SuccessImage from '../../public/images/success.svg';
 import FormWithButton from '../elements/FormWithButton';
+
+const SuccessImage = require('../images/success.svg');
 
 interface Props {}
 
