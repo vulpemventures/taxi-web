@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { copyToClipboard } from 'copy-lite';
 
 import InputWithButton from '../elements/InputWithButton';
-import SuccessImage from '../../public/success.svg';
+import SuccessImage from '../../public/images/success.svg';
 import FormWithButton from '../elements/FormWithButton';
 
 interface Props {}

@@ -3,7 +3,7 @@ import React from 'react';
 import ButtonPrimary from './elements/ButtonPrimary';
 import ButtonTransparent from './elements/ButtonTransparent';
 
-const taxiImage = require('../public/favicon.png');
+const taxiImage = require('../public/images/taxi.png');
 
 interface Props {
   title?: string;
