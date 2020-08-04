@@ -2,7 +2,9 @@ import TaxiClient from './taxiClient';
 import createDummyTx from './createDummyTx';
 import { Psbt } from 'liquidjs-lib';
 
-const taxiClient = new TaxiClient('http://localhost:8080');
+const taxiClient = new TaxiClient(
+  'https://z7hfdsdqee.execute-api.eu-west-1.amazonaws.com/dev'
+);
 const TETHER_ASSET_HASH =
   'ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2';
 
