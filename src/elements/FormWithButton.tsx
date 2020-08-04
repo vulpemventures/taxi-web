@@ -3,6 +3,8 @@ import React from 'react';
 interface Props {
   firstPlaceholder: string;
   secondPlaceholder: string;
+  firstValue: number;
+  secondValue: number;
   onFirstInputChange: any;
   onSecondInputChange: any;
   onSubmit?: any;
@@ -11,15 +13,23 @@ interface Props {
 }
 
 const FormWithButton: React.FunctionComponent<Props> = props => {
-  const { firstPlaceholder, secondPlaceholder } = props;
+  const {
+    firstPlaceholder,
+    secondPlaceholder,
+    firstValue,
+    secondValue,
+    onFirstInputChange,
+    onSecondInputChange,
+  } = props;
   return (
     <div>
       <div className="field">
         <label className="label has-text-white"> Inputs </label>
         <input
           type="number"
-          min="1"
-          onChange={(e: any) => props.onFirstInputChange(e.target.value)}
+          min={1}
+          value={firstValue}
+          onChange={(e: any) => onFirstInputChange(Number(e.target.value))}
           className={'input is-medium'}
           placeholder={firstPlaceholder}
         />
@@ -28,8 +38,9 @@ const FormWithButton: React.FunctionComponent<Props> = props => {
         <label className="label has-text-white"> Outputs </label>
         <input
           type="number"
-          min="1"
-          onChange={(e: any) => props.onSecondInputChange(e.target.value)}
+          min={1}
+          value={secondValue}
+          onChange={(e: any) => onSecondInputChange(Number(e.target.value))}
           className={'input is-medium'}
           placeholder={secondPlaceholder}
         />
