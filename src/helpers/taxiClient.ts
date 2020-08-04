@@ -1,26 +1,4 @@
-export interface TwirpErrorJSON {
-  code: string;
-  msg: string;
-  meta: { [index: string]: string };
-}
-
-export class TwirpError extends Error {
-  code: string;
-  meta: { [index: string]: string };
-
-  constructor(te: TwirpErrorJSON) {
-    super(te.msg);
-
-    this.code = te.code;
-    this.meta = te.meta;
-  }
-}
-
-export const throwTwirpError = (resp: Response) => {
-  return resp.json().then((err: TwirpErrorJSON) => {
-    throw new TwirpError(err);
-  });
-};
+import { throwTwirpError } from './twirp';
 
 export default class TaxiClient {
   private baseUrl: string;
@@ -41,6 +19,24 @@ export default class TaxiClient {
   getAssetEstimate(pset: string, assetHash: string): Promise<any> {
     return fetch(
       this.url + '/GetAssetEstimate',
+      Object.assign({}, this.defaultOptions, {
+        body: JSON.stringify({
+          unsigned: {
+            pset,
+          },
+          asset_hash: assetHash,
+        }),
+      })
+    ).then(response => {
+      if (!response.ok) return throwTwirpError(response);
+
+      return response.json();
+    });
+  }
+
+  topupWithAsset(pset: string, assetHash: string): Promise<any> {
+    return fetch(
+      this.url + '/TopupWithAsset',
       Object.assign({}, this.defaultOptions, {
         body: JSON.stringify({
           unsigned: {
