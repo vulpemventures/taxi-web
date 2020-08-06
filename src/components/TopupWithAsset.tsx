@@ -4,7 +4,12 @@ import { copyToClipboard } from 'copy-lite';
 import InputWithButton from '../elements/InputWithButton';
 import FormWithButton from '../elements/FormWithButton';
 
-import { estimateFees, topupWithTether, TwirpError } from '../helpers';
+import {
+  estimateFees,
+  topupWithTether,
+  TwirpError,
+  toPrettyUSD,
+} from '../helpers';
 
 const SuccessImage = require('../images/success.png');
 
@@ -17,13 +22,6 @@ enum VIEW {
   CONFIRM = 2,
   RESULT = 3,
 }
-
-const toPrettyUSD = (x: number) => {
-  return (x / 10 ** 8).toLocaleString(undefined, {
-    minimumIntegerDigits: 1,
-    maximumFractionDigits: 2,
-  });
-};
 
 const Topup: React.FunctionComponent<Props> = props => {
   const [view, setView] = useState(VIEW.ESTIMATE);
@@ -69,8 +67,9 @@ const Topup: React.FunctionComponent<Props> = props => {
           buttonText="Estimate"
           onSubmit={() => {
             estimateFees(ins, outs)
-              .then(({ breakdown, asset_amount }: any) => {
+              .then(({ breakdown, asset_amount, order_id }: any) => {
                 props.onError('');
+                setOrderId(order_id);
                 setBreakdown(breakdown);
                 setAssetAmount(asset_amount);
                 setView(VIEW.CONFIRM);
@@ -122,7 +121,7 @@ const Topup: React.FunctionComponent<Props> = props => {
           inputPlaceholder={'Provide a PSET (base64)'}
           onInputChange={setUnsigned}
           onSubmit={() => {
-            topupWithTether(unsigned)
+            topupWithTether(orderId, unsigned)
               .then(({ order, asset_amount }: any) => {
                 props.onError('');
                 setOrderId(order.order_id);

@@ -34,7 +34,11 @@ export default class TaxiClient {
     });
   }
 
-  topupWithAsset(pset: string, assetHash: string): Promise<any> {
+  topupWithAsset(
+    orderId: string,
+    pset: string,
+    assetHash: string
+  ): Promise<any> {
     return fetch(
       this.url + '/TopupWithAsset',
       Object.assign({}, this.defaultOptions, {
@@ -43,6 +47,7 @@ export default class TaxiClient {
             pset,
           },
           asset_hash: assetHash,
+          order_id: orderId,
         }),
       })
     ).then(response => {
