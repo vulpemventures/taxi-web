@@ -19,7 +19,7 @@
     "lint": "tsdx lint",
     "scss": "npx node-sass --output-style compressed -o public/css public/scss",
     "serve": "npx parcel --no-cache --port 8080 public/index.html",
-    "bundle": "yarn scss && yarn build && npx parcel build --no-cache public/index.html && cpx CNAME /dist",
+    "bundle": "yarn scss && yarn build && npx parcel build --no-cache public/index.html",
     "deploy": "npx push-dir --dir=dist --branch=gh-pages"
   },
   "husky": {
