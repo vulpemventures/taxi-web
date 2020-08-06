@@ -2,11 +2,12 @@ import TaxiClient from './taxiClient';
 import createDummyTx from './createDummyTx';
 import { Psbt } from 'liquidjs-lib';
 
-const taxiClient = new TaxiClient(
-  'https://3moyhezvi3.execute-api.eu-west-1.amazonaws.com/production'
-);
+const TAXI_API_URL =
+  process.env.TAXI_API_URL ||
+  'https://3moyhezvi3.execute-api.eu-west-1.amazonaws.com/production';
 const TETHER_ASSET_HASH =
   'ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2';
+const taxiClient = new TaxiClient(TAXI_API_URL);
 
 export function estimateFees(ninput: number, noutput: number): Promise<any> {
   const dummyPset = createDummyTx(ninput, noutput);
