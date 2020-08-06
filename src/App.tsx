@@ -20,7 +20,7 @@ const App: React.FunctionComponent<Props> = () => {
   const [error, setError] = useState('');
 
   return (
-    <Layout menu={['Top-up', 'FAQ', 'API']} onMenuChange={console.log}>
+    <Layout menu={['Top-up']}>
       <div className="container">
         {error.length > 0 && (
           <div className="notification is-danger is-large">
