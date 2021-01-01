@@ -70,7 +70,6 @@ class Layout extends React.Component<Props> {
                 alt="Liquid Taxi"
                 style={{ height: '48px' }}
               />
-              <h1 className="title is-6 ml-2">Liquid.Taxi</h1>
             </a>
           </div>
           <div className="navbar-menu">
