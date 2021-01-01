@@ -5,10 +5,11 @@ import TopupWithAsset from './components/TopupWithAsset';
 import TopupWithLN from './components/TopupWithLN';
 
 import ButtonRadio from './elements/ButtonRadio';
+import Intro from './components/Intro';
 
 interface Props {}
 
-const RADIO_VALUES = ['Pay with Liquid Tether', 'Pay with Lightning Network'];
+const RADIO_VALUES = ['Pay with USDt', 'Use API KEY'];
 
 enum VIEW {
   ASSET = 1,
@@ -21,6 +22,7 @@ const App: React.FunctionComponent<Props> = () => {
 
   return (
     <Layout menu={['Top-up']}>
+      <Intro />
       <div className="container">
         {error.length > 0 && (
           <div className="notification is-danger is-large">
