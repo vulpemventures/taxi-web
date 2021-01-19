@@ -4,6 +4,7 @@ import ButtonPrimary from './elements/ButtonPrimary';
 import ButtonTransparent from './elements/ButtonTransparent';
 
 const taxiImage = require('./images/taxi.png');
+const currentYear = new Date().getFullYear();
 
 interface Props {
   title?: string;
@@ -103,7 +104,7 @@ class Layout extends React.Component<Props> {
               target="_blank"
               rel="noopener noreferrer"
             >
-              © 2020 Vulpem Ventures OU
+              © {currentYear} Vulpem Ventures OU
             </a>
             {` - `}
             <a

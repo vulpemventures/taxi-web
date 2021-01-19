@@ -41,19 +41,18 @@
     "bulma-pageloader": "^0.3.0",
     "copy-lite": "^0.1.2",
     "cpx": "^1.5.0",
+    "google-protobuf": "^3.14.0",
     "husky": "^4.2.5",
-    "liquidjs-lib": "provable-things/liquidjs-lib",
+    "liquidjs-lib": "vulpemventures/liquidjs-lib",
     "parcel-bundler": "^1.12.4",
     "push-dir": "^0.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sass": "^1.26.10",
+    "taxi-protobuf": "vulpemventures/taxi-protobuf",
     "ts-node": "^8.10.2",
     "tsdx": "^0.13.2",
     "tslib": "^2.0.0",
     "typescript": "^3.9.6"
-  },
-  "dependencies": {
-    "taxi-protobuf": "vulpemventures/taxi-protobuf"
   }
 }
