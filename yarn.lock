@@ -1897,7 +1897,7 @@ bindings@^1.3.0, bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-"bip174@github:vulpemventures/bip174":
+bip174@vulpemventures/bip174.git:
   version "1.0.1"
   resolved "https://codeload.github.com/vulpemventures/bip174/tar.gz/d6a71254fa66b2ba84de80c67b7255ab65979c3b"
 
@@ -1926,7 +1926,7 @@ bitcoin-ops@^1.3.0, bitcoin-ops@^1.4.0:
   resolved "https://registry.yarnpkg.com/bitcoin-ops/-/bitcoin-ops-1.4.1.tgz#e45de620398e22fd4ca6023de43974ff42240278"
   integrity sha512-pef6gxZFztEhaE9RY9HmWVmiIHqCb2OyS4HPKkpc6CIiiOa3Qmuoylxc5P2EkU3w+5eTSifI9SEZC88idAIGow==
 
-"blech32@github:vulpemventures/blech32":
+blech32@vulpemventures/blech32.git:
   version "1.0.0"
   resolved "https://codeload.github.com/vulpemventures/blech32/tar.gz/b42822d0496a27ed5a313395517e9029bcfccf2e"
 
@@ -4072,6 +4072,11 @@ globrex@^0.1.2:
   resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
   integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
+google-protobuf@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.14.0.tgz#20373d22046e63831a5110e11a84f713cc43651e"
+  integrity sha512-bwa8dBuMpOxg7COyqkW6muQuvNnWgVN8TX/epDRGW5m0jcrmq2QJyCyiV8ZE2/6LaIIqJtiv9bYokFhfpy/o6w==
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
@@ -5460,24 +5465,24 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-liquidjs-lib@provable-things/liquidjs-lib:
+liquidjs-lib@vulpemventures/liquidjs-lib:
   version "5.1.6"
-  resolved "https://codeload.github.com/provable-things/liquidjs-lib/tar.gz/97673986c4233dee61f98dc59b5256ed2a8f313d"
+  resolved "https://codeload.github.com/vulpemventures/liquidjs-lib/tar.gz/009a81f1c483aa2c947752ed3e7e47322ce41eba"
   dependencies:
     axios "^0.19.2"
     bech32 "^1.1.2"
-    bip174 "github:vulpemventures/bip174"
+    bip174 vulpemventures/bip174.git
     bip32 "^2.0.4"
     bip66 "^1.1.0"
     bitcoin-ops "^1.4.0"
-    blech32 "github:vulpemventures/blech32"
+    blech32 vulpemventures/blech32.git
     bs58check "^2.0.0"
     create-hash "^1.1.0"
     create-hmac "^1.1.3"
     merkle-lib "^2.0.10"
     pushdata-bitcoin "^1.0.1"
     randombytes "^2.0.1"
-    secp256k1-zkp "github:vulpemventures/secp256k1-zkp"
+    secp256k1-zkp vulpemventures/secp256k1-zkp.git
     tiny-secp256k1 "^1.1.1"
     typeforce "^1.11.3"
     varuint-bitcoin "^1.0.4"
@@ -7649,7 +7654,7 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-"secp256k1-zkp@github:vulpemventures/secp256k1-zkp":
+secp256k1-zkp@vulpemventures/secp256k1-zkp.git:
   version "1.0.0"
   resolved "https://codeload.github.com/vulpemventures/secp256k1-zkp/tar.gz/7e0d8aeddda593cf0ed8ad18c0c0607283bd7848"
   dependencies:
@@ -8276,7 +8281,7 @@ table@^5.2.3:
 
 taxi-protobuf@vulpemventures/taxi-protobuf:
   version "1.0.0"
-  resolved "https://codeload.github.com/vulpemventures/taxi-protobuf/tar.gz/4d10bc7c0e26cc8d4a9198e8aa1307dce9afbd5f"
+  resolved "https://codeload.github.com/vulpemventures/taxi-protobuf/tar.gz/5b4ce4d487f4a0c487604d6cfbf7ee8800a73c11"
   dependencies:
     grpc-web "1.2.0"
 

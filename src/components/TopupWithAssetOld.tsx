@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import { copyToClipboard } from 'copy-lite';
 
 import InputWithButton from '../elements/InputWithButton';
@@ -91,10 +91,8 @@ const Topup: React.FunctionComponent<Props> = props => {
             {toPrettyUSD(Number(assetAmount))} USDt
           </h1>
           <p className="subtitle is-6">
-            {/* eslint-disable-next-line */}
-            <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
-              !showDetails ? `View` : `Hide`
-            } details`}</a>
+            <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${!showDetails ? `View` : `Hide`
+              } details`}</a>
           </p>
           {showDetails && (
             <div className="notification is-warning">
@@ -146,23 +144,21 @@ const Topup: React.FunctionComponent<Props> = props => {
           {toPrettyUSD(Number(assetAmount))} USDt
         </h1>
         <p className="subtitle is-6">
-          {/* eslint-disable-next-line */}
-          <a href="#" onClick={() => setShowDetails(!showDetails)}>{`${
-            !showDetails ? `View` : `Hide`
-          } details`}</a>
-        </p>
-        {showDetails && (
-          <div className="notification is-warning">
-            Values are expressed in satoshis (Precision: 8)
-            <br />
-            <br />
+<a href="#" onClick={() => setShowDetails(!showDetails)}>{`${!showDetails ? `View` : `Hide`
+  } details`}</a>
+        </p >
+  { showDetails && (
+    <div className="notification is-warning">
+      Values are expressed in satoshis (Precision: 8)
+      <br />
+      <br />
             Network fees (L-BTC): {breakdown.fee} <br />
             Service fees (L-BTC): {breakdown.spread} <br />
             Total fees (L-BTC): {breakdown.total} <hr />
             Satoshi Per Byte: {breakdown.sat_per_byte} <br />
             Total fees (L-USDt): {assetAmount}
-          </div>
-        )}
+    </div>
+  )}
         <img src={SuccessImage} alt="Liquid Taxi Success" />
         <h1 className="title is-5 mt-3 mb-6">Topup successful</h1>
         <h1 className="title is-6 mt-6 has-text-left">Transaction with fees</h1>
@@ -172,12 +168,13 @@ const Topup: React.FunctionComponent<Props> = props => {
           onSubmit={() => copy(partial)}
         />
         <p className="subtitle is-6 mt-3">
-          Import this transaction (PSET) in your Liquid wallet to sign and
-          finalize the transfer of your Liquid Assets
+    Import this transaction (PSET) in your Liquid wallet to sign and
+    finalize the transfer of your Liquid Assets
         </p>
-      </div>
+      </div >
     );
-  return null;
+return null;
 };
 
 export default Topup;
+ */

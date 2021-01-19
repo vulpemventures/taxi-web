@@ -3,7 +3,7 @@ import React from 'react';
 interface Props {
   inputPlaceholder?: string;
   inputText?: string;
-  onSubmit?: any;
+  onButtonClick?: any;
   onInputChange?: any;
   hasError?: boolean;
   errorMessage?: string;
@@ -26,10 +26,10 @@ const Input: React.FunctionComponent<Props> = props => {
         />
         <button
           className="button is-primary is-medium"
-          onClick={props.onSubmit}
+          onClick={props.onButtonClick}
           disabled={props.buttonDisabled || false}
         >
-          <h1 className="title has-text-dark is-4">{props.buttonText}</h1>
+          <h1 className="title has-text-dark is-6">{props.buttonText}</h1>
         </button>
       </div>
       {props.hasError && (
