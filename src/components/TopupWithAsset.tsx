@@ -11,9 +11,11 @@ import ButtonPrimary from '../elements/ButtonPrimary';
 import ButtonDisabled from '../elements/ButtonDisabled';
 import InputWithButton from '../elements/InputWithButton';
 
-const USDT_ASSET_HASH =
-  process.env['ASSET_HASH'] ||
-  'ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2';
+const config = require('../config.json');
+
+const USDT_ASSET_ID = process.env['USDT_ASSET_ID'] || config.USDT_ASSET_ID;
+
+const TAXI_API_URL = process.env['TAXI_API_URL'] || config.TAXI_API_URL;
 
 interface Props {
   onError(message: string): void;
@@ -29,10 +31,10 @@ const TopupWithAsset: React.FunctionComponent<Props> = props => {
     if (isLoading) return;
 
     setIsLoading(true);
-    const client = new TaxiClient('http://localhost:8000');
+    const client = new TaxiClient(TAXI_API_URL);
 
     const request = new TopupWithAssetRequest();
-    request.setAssetHash(USDT_ASSET_HASH);
+    request.setAssetHash(USDT_ASSET_ID);
 
     client
       .topupWithAsset(request, null)
@@ -55,15 +57,17 @@ const TopupWithAsset: React.FunctionComponent<Props> = props => {
       {!isLoading && Object.keys(topup).length > 0 ? (
         <Result topup={topup} />
       ) : (
-        <div>
-          <h1 className="title is-3 mt-6">Top-up with Liquid Tether</h1>
-          <p className="subtitle is-5 mt-3 mb-6">
+        <div className="container">
+          <h1 className="title is-3 mt-6 mb-6">Top-up with Liquid Tether</h1>
+          <p className="subtitle is-6">
             1. Request a partial signed transaction. This includes Liquid
-            Bitcoin for the fees <br />
+            Bitcoin for the fees
+          </p>
+          <p className="subtitle is-6">
             2. Import in your wallet and adds your USDt inputs and outputs{' '}
-            <br />
+          </p>
+          <p className="subtitle is-6">
             3. Broadcats the final transaction to the network within 3 minutes.{' '}
-            <br />
           </p>
           <ButtonCentered onClick={onRequestClick} />
         </div>
@@ -144,28 +148,37 @@ const Result: React.FunctionComponent<{ topup: any }> = props => {
         <ButtonDisabled>Open with Marina </ButtonDisabled>
       </div>
       {showInstructions && (
-        <div>
-          <h1 className="title is-3 mt-6">
+        <div className="container">
+          <h1 className="title is-3 mt-6 mb-6">
             How to import a topup with Liquid.Coach
           </h1>
-          <p className="subtitle is-5 mt-3 mb-6">
+          <p className="subtitle is-6">
             1. Go to{' '}
             <a href="https://liquid.coach" target="_blank" rel="noreferrer">
               Liquid.Coach
             </a>{' '}
-            <br />
+          </p>
+          <p className="subtitle is-6">
             2. Paste your address holding USDt or generate a Liquid wallet in
             the browser
-            <br />
+          </p>
+          <p className="subtitle is-6">
             3. Click on <b>Import</b> and copy-paste the{' '}
-            <b>Transaction with L-BTC fees</b> above <br />
+            <b>Transaction with L-BTC fees</b> above
+          </p>
+          <p className="subtitle is-6">
             4. <b>Inputs:</b> Add your USDt input(s) selecting from the select
-            box <br />
+            box
+          </p>
+          <p className="subtitle is-6">
             5. <b>Outputs:</b> Add you USDt output(s), like the receiver output
             and the eventual USDt change
-            <br />
+          </p>
+          <p className="subtitle is-6">
             6. Click on <b>Encode</b> and then <b>Sign</b> and paste your
-            mnemonic phrase <br />
+            mnemonic phrase
+          </p>
+          <p className="subtitle is-6">
             7. Broadcast the resulting hex encoded transaction
           </p>
         </div>
