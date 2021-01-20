@@ -88,6 +88,7 @@ const Result: React.FunctionComponent<{ topup: any }> = props => {
 
   const [copySuccess, setCopySuccess] = useState('');
   const [showDetails, setShowDetails] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
 
   const copy = (value: string) => {
     copyToClipboard(value);
@@ -100,39 +101,75 @@ const Result: React.FunctionComponent<{ topup: any }> = props => {
     setShowDetails(!showDetails);
   };
 
+  const toggleInstructions = (evt: React.MouseEvent<HTMLAnchorElement>) => {
+    evt.preventDefault();
+    setShowInstructions(!showInstructions);
+  };
+
   return (
-    <div className="has-text-centered">
-      <p className="subtitle is-6 mt-6">ORDER {topup.topupId}</p>
-      <h1 className="title is-3 mt-6 mb-3">{`${assetAmountFractional} USDt`}</h1>
-      <p className="subtitle is-6">
-        {/* eslint-disable-next-line */}
-        <a href="#" onClick={toggleDetails}>{`${!showDetails ? `View` : `Hide`} details`}</a>
-      </p>
-      {showDetails && (
-        <div className="notification is-warning">
-          Fees (Liquid Bitcoin): 0.00001 L-BTC <br />
-          Amount to be paid (Liquid Tether): {assetAmountFractional} USDt
+    <div>
+      <div className="has-text-centered">
+        <p className="subtitle is-6 mt-6">ORDER {topup.topupId}</p>
+        <h1 className="title is-3 mt-6 mb-3">{`${assetAmountFractional} USDt`}</h1>
+        <p className="subtitle is-6">
+          {/* eslint-disable-next-line */}
+          <a href="#" onClick={toggleDetails}>{`${!showDetails ? `View` : `Hide`} details`}</a>
+        </p>
+        {showDetails && (
+          <div className="notification is-warning">
+            Fees (Liquid Bitcoin): 0.00001 L-BTC <br />
+            Amount to be paid (Liquid Tether): {assetAmountFractional} USDt
+          </div>
+        )}
+        <img
+          src={require('../images/success.png')}
+          alt="success icon after a topup with Liquid.Taxi"
+        />
+        <h1 className="title is-5 mt-3 mb-6"> Topup completed</h1>
+        <h1 className="title is-6 mt-6 has-text-left">
+          Transaction with L-BTC fees
+        </h1>
+        <InputWithButton
+          buttonText={copySuccess.length > 0 ? copySuccess : 'Copy'}
+          inputText={topup.partial}
+          onButtonClick={() => copy(topup.partial)}
+        />
+        <p className="subtitle is-6 mt-6">
+          {`You have 3 minutes to fund the transaction with USDt inputs that covers the 
+          fee of ${assetAmountFractional} and broadcast through the Liquid Network.`}
+        </p>
+        <ButtonPrimary onClick={toggleInstructions}>
+          Import into Liquid.Coach
+        </ButtonPrimary>
+        <ButtonDisabled>Open with Marina </ButtonDisabled>
+      </div>
+      {showInstructions && (
+        <div>
+          <h1 className="title is-3 mt-6">
+            How to import a topup with Liquid.Coach
+          </h1>
+          <p className="subtitle is-5 mt-3 mb-6">
+            1. Go to{' '}
+            <a href="https://liquid.coach" target="_blank" rel="noreferrer">
+              Liquid.Coach
+            </a>{' '}
+            <br />
+            2. Paste your address holding USDt or generate a Liquid wallet in
+            the browser
+            <br />
+            3. Click on <b>Import</b> and copy-paste the{' '}
+            <b>Transaction with L-BTC fees</b> above <br />
+            4. <b>Inputs:</b> Add your USDt input(s) selecting from the select
+            box <br />
+            5. <b>Outputs:</b> Add you USDt output(s), like the receiver output
+            and the eventual USDt change
+            <br />
+            6. Click on <b>Encode</b> and then <b>Sign</b> and paste your
+            mnemonic phrase <br />
+            7. Broadcast the resulting hex encoded transaction
+          </p>
         </div>
       )}
-      <img
-        src={require('../images/success.png')}
-        alt="success icon after a topup with Liquid.Taxi"
-      />
-      <h1 className="title is-5 mt-3 mb-6"> Topup completed</h1>
-      <h1 className="title is-6 mt-6 has-text-left">
-        Transaction with L-BTC fees
-      </h1>
-      <InputWithButton
-        buttonText={copySuccess.length > 0 ? copySuccess : 'Copy'}
-        inputText={topup.partial}
-        onButtonClick={() => copy(topup.partial)}
-      />
-      <p className="subtitle is-6 mt-6">
-        {`You have 3 minutes to fund the transaction with USDt inputs that covers the 
-          fee of ${assetAmountFractional} and broadcast through the Liquid Network.`}
-      </p>
-      <ButtonPrimary onClick={console.log}>Open with Elements</ButtonPrimary>
-      <ButtonDisabled>Open with Marina </ButtonDisabled>
     </div>
   );
 };
