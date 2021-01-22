@@ -72,7 +72,7 @@ const TopupWithAsset: React.FunctionComponent<Props> = props => {
           </p>
           <p className="subtitle is-6">
             3. Broadcats the final transaction to the network within the
-            expiratioon time (by default 3 minutes).{' '}
+            expiration time (by default 3 minutes).{' '}
           </p>
           <ButtonCentered onClick={onRequestClick} />
         </div>
