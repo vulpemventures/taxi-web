@@ -5,6 +5,7 @@ import { TaxiClient } from 'taxi-protobuf/generated/js/TaxiServiceClientPb';
 import {
   TopupWithAssetRequest,
   TopupWithAssetReply,
+  Topup,
 } from 'taxi-protobuf/generated/js/taxi_pb';
 
 import ButtonPrimary from '../elements/ButtonPrimary';
@@ -24,6 +25,7 @@ interface Props {
 const TopupWithAsset: React.FunctionComponent<Props> = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [topup, setTopup] = useState({});
+  const [expiry, setExpiry] = useState(0);
 
   const onRequestClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
@@ -39,13 +41,16 @@ const TopupWithAsset: React.FunctionComponent<Props> = props => {
     client
       .topupWithAsset(request, null)
       .then((response: TopupWithAssetReply) => {
+        console.log(response);
         const topup = response.getTopup();
+        const expiry = response.getExpiry();
 
         if (!topup) return props.onError('Internal error');
 
         setTopup(topup.toObject());
+        setExpiry(expiry);
       })
-      .catch((e: Error) => props.onError(e.message));
+      .catch((e: Error) => props.onError(e.message || JSON.stringify(e)));
 
     setIsLoading(false);
   };
@@ -55,7 +60,7 @@ const TopupWithAsset: React.FunctionComponent<Props> = props => {
   return (
     <div>
       {!isLoading && Object.keys(topup).length > 0 ? (
-        <Result topup={topup} />
+        <Result topup={topup as Topup.AsObject} expiryTimestamp={expiry} />
       ) : (
         <div className="container">
           <h1 className="title is-3 mt-6 mb-6">Top-up with Liquid Tether</h1>
@@ -67,7 +72,8 @@ const TopupWithAsset: React.FunctionComponent<Props> = props => {
             2. Import in your wallet and adds your USDt inputs and outputs{' '}
           </p>
           <p className="subtitle is-6">
-            3. Broadcats the final transaction to the network within 3 minutes.{' '}
+            3. Broadcats the final transaction to the network within the
+            expiratioon time (by default 3 minutes).{' '}
           </p>
           <ButtonCentered onClick={onRequestClick} />
         </div>
@@ -86,9 +92,14 @@ const ButtonCentered: React.FunctionComponent<{
   );
 };
 
-const Result: React.FunctionComponent<{ topup: any }> = props => {
-  const { topup } = props;
+const Result: React.FunctionComponent<{
+  topup: Topup.AsObject;
+  expiryTimestamp: number;
+}> = props => {
+  const { topup, expiryTimestamp } = props;
   const assetAmountFractional = topup.assetAmount / 10 ** 8;
+  const assetSpreadFractional = topup.assetSpread / 10 ** 8;
+  const expiryDate = new Date(expiryTimestamp * 1000);
 
   const [copySuccess, setCopySuccess] = useState('');
   const [showDetails, setShowDetails] = useState(false);
@@ -120,9 +131,16 @@ const Result: React.FunctionComponent<{ topup: any }> = props => {
           <a href="#" onClick={toggleDetails}>{`${!showDetails ? `View` : `Hide`} details`}</a>
         </p>
         {showDetails && (
-          <div className="notification is-warning">
-            Fees (Liquid Bitcoin): 0.00001 L-BTC <br />
-            Amount to be paid (Liquid Tether): {assetAmountFractional} USDt
+          <div className="notification is-warning has-text-left">
+            <p className="subtitle is-6">
+              Amount to be paid (Liquid Tether): {assetAmountFractional} USDt
+            </p>
+            <p className="subtitle is-6">
+              Taxi service fee (Liquid Tether): {assetSpreadFractional} USDt
+            </p>
+            <p className="subtitle is-6">
+              On-chain fees (Liquid Bitcoin): 0.00001 L-BTC
+            </p>
           </div>
         )}
         <img
@@ -139,8 +157,13 @@ const Result: React.FunctionComponent<{ topup: any }> = props => {
           onButtonClick={() => copy(topup.partial)}
         />
         <p className="subtitle is-6 mt-6">
-          {`You have 3 minutes to fund the transaction with USDt inputs that covers the 
-          fee of ${assetAmountFractional} and broadcast through the Liquid Network.`}
+          {`You have until`}{' '}
+          <b>
+            {' '}
+            {`${expiryDate.toLocaleTimeString()} of ${expiryDate.toLocaleDateString()}`}{' '}
+          </b>{' '}
+          {`to fund the transaction with enough Liquid Tether to cover the
+          fee of ${assetAmountFractional} USDt and broadcast it through the Liquid Network.`}
         </p>
         <ButtonPrimary onClick={toggleInstructions}>
           Import into Liquid.Coach
