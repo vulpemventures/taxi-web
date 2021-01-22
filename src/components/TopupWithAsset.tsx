@@ -41,7 +41,6 @@ const TopupWithAsset: React.FunctionComponent<Props> = props => {
     client
       .topupWithAsset(request, null)
       .then((response: TopupWithAssetReply) => {
-        console.log(response);
         const topup = response.getTopup();
         const expiry = response.getExpiry();
 
